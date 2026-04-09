@@ -1,0 +1,378 @@
+.navbar {
+    position: relative;
+    z-index: 200;
+
+    &-navigation {
+        display: flex;
+
+        &-left {
+            width: 50vw;
+            height: 100vh;
+            background: linear-gradient(to bottom, rgba($color-dark, 0.7), rgba($color-black, 0.7)), url('../images/bg-image-left.jpeg') center no-repeat;
+            background-color: $color-dark;
+            background-size: cover;
+            position: fixed;
+            left: -50vw;
+            transition: left 0.7s cubic-bezier(1, 0, 0, 1);
+
+            @media(max-width: 800px) {
+                display: none;
+            }
+
+            .left-img {
+                width: 50%;
+                position: absolute;
+                box-shadow: 30px 30px 60px $color-black;
+                opacity: 1;
+                border: 2px solid $color-primary;
+                border-radius: 10px;
+
+                @media(max-width: 1300px) {
+                    width: 55%;
+                }
+
+                @media(max-width: 1000px) {
+                    width: 65%;
+                }
+            }
+
+            .left-img-1 {
+                top: 15%;
+                left: 15%;
+
+                @media(max-width: 1000px) {
+                    left: 5%;
+                }
+            }
+
+            .left-img-2 {
+                top: 35%;
+                left: 25%;
+
+                @media(max-width: 1000px) {
+                    left: 15%;
+                }
+            }
+
+            .left-img-3 {
+                top: 55%;
+                left: 35%;
+
+                @media(max-width: 1000px) {
+                    left: 25%;
+                }
+            }
+
+        }
+
+        &-right {
+            width: 50vw;
+            height: 100vh;
+            position: fixed;
+            background: linear-gradient(to bottom, rgba($color-dark, 0.7), rgba($color-black, 0.7)), url('../images/bg-image-1.jpeg') center no-repeat;
+            background-size: cover;
+            background-color: #1f1d1d;
+            right: -50vw;
+            @include flexLayout;
+            border: 1px solid $color-dark;
+            transition: right 0.7s cubic-bezier(1, 0, 0, 1);
+
+            @media(max-width: 800px) {
+                width: 100vw;
+                right: -100vw;
+            }
+
+        }
+
+        .nav-list {
+            &-item {
+                list-style: none;
+            }
+
+            &-link {
+                font-family: $font-dancingScript;
+                font-size: 100px;
+                @include textStyles(capitalize);
+                color: $color-secondary;
+                text-decoration: none;
+                display: block;
+                margin: 20px;
+                text-align: center;
+                transition: all 0.5s;
+
+                &:hover {
+                    color: $color-primary;
+                    letter-spacing: 4px;
+                }
+                
+                @media(max-width: 2560px) {
+                    font-size: 50px;
+                }
+
+                @media(max-width: 600px) {
+                    font-size: 40px;
+                }
+            }
+        }
+    }
+}
+
+
+.checkbox:checked ~ .navbar-navigation .navbar-navigation-left {
+    left: 0;
+}
+
+.checkbox:checked ~ .navbar-navigation .navbar-navigation-right {
+    right: 0%;
+}
+
+.checkbox:checked ~ .hamburger-menu .menu::after {
+    transform: scale(1) translate(-3%);
+    opacity: 1;
+}
+
+.checkbox:checked ~ .hamburger-menu .menu-line {
+    background-color: $color-black;
+}
+
+.checkbox:checked ~ .hamburger-menu .menu-line-1 {
+    transform: rotateZ(-43deg);
+}
+
+.checkbox:checked ~ .hamburger-menu .menu-line-2 {
+    opacity: 0;
+}
+
+.checkbox:checked ~ .hamburger-menu .menu-line-3 {
+    transform: rotateZ(43deg);
+}
+
+
+
+.header {
+    width: 100%;
+    height: 100vh;
+    position: relative;
+    background: linear-gradient(rgba($color-black, 0.6), rgba($color-black, 0.4)), url("../images/bg-image-2.jpeg") center no-repeat;
+    background-size: cover;
+
+    .brand {
+        display: flex;
+        align-items: center;
+        @include centering(15%);
+
+        @media(max-width: 350px) {
+            top: 18%;
+        }
+    }
+
+    &-banner {
+        text-align: center;
+        @include centering(50%);
+
+        @media(max-width: 1600px) {
+            top: 45%;
+        }
+
+        @media(max-width: 350px) {
+            top: 50%;
+        }
+    }
+}
+
+.about-us {
+    min-height: 90vh;
+    display: flex;
+    align-items: center;
+    margin: 10px 0;
+
+    @media(max-width: 900px) {
+        min-height: 70vh;
+    }
+
+    &-left {
+        width: 40%;
+        position: relative;
+
+        @media(max-width: 800px) {
+            display: none;
+        }
+
+        img {
+            width: 100%;
+            opacity: 0.8;
+        }
+    }
+
+    &-right {
+        width: 60%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        padding: 0 100px;
+        box-sizing: border-box;
+
+        @media(max-width: 1300px) {
+            padding: 0 50px;
+        }
+
+        @media(max-width: 800px) {
+            width: 100%;
+        }
+
+        @media(max-width: 500px) {
+            padding: 0 20px;
+        }
+
+        .stars {
+            margin: 30px 0;
+
+            @media(max-width: 1000px) {
+                margin: 15px 0;
+            }
+        }
+
+        .star {
+            width: 22px;
+            margin-left: 10px;
+            
+            @media(max-width: 2560px) {
+                width: 15px;
+            }
+
+            @media(max-width: 1000px) {
+                width: 12px;
+            }
+        }
+
+        .description {
+            font-family: $font-josefinSans;
+            font-size: 40px;
+            font-style: italic;
+            font-weight: 300;
+            color: $color-secondary;
+            width: 70%;
+            text-align: justify;
+            line-height: 48px;
+
+            &::first-letter {
+                padding-left: 50px;
+            }
+            
+            @media(max-width: 2560px) {
+                font-size: 25px;
+                line-height: 30px;
+                width: 100%;
+            }
+
+            @media(max-width: 1600px) {
+                font-size: 18px;
+            }
+
+            @media(max-width: 1000px) {
+                font-size: 14px;
+                line-height: 22px;
+            }
+
+            @media(max-width: 500px) {
+                font-size: 12px;
+            }
+        }
+    }
+}
+
+.gallery {
+    .cards-wrapper {
+        display: flex;
+        flex-wrap: wrap;
+    }
+}
+
+.footer {
+    padding: 70px 0;
+    @include flexLayout;
+    flex-direction: column;
+
+    @media(max-width: 500px) {
+        padding: 40px 0;
+    }
+
+    &-header {
+        display: flex;
+        align-items: center;
+        margin-bottom: 70px;
+    }
+
+    .social-media {
+        display: flex;
+        width: 500px;
+        justify-content: space-between;
+        margin-bottom: 70px;
+        
+        @media(max-width: 2560px) {
+            width: 300px;
+        }
+
+        @media(max-width: 500px) {
+            width: 200px;
+            margin-bottom: 40px;
+        }
+
+        &-item {
+            list-style: none;
+        }
+
+        &-link {
+            text-decoration: none;
+            font-size: 70px;
+            color: $color-secondary;
+            
+            @media(max-width: 2560px) {
+                font-size: 50px;
+            }
+            
+            @media(max-width: 1000px) {
+                font-size: 35px;
+            }
+
+            @media(max-width: 500px) {
+                font-size: 25px;
+            }
+
+            .fab {
+                transition: all 0.3s;
+            }
+
+            &:hover > .fab {
+                color: deeppink;
+                transform: scale(1.15)
+            }
+
+            @media(max-width: 1000px) {
+                font-size: 35px;
+            }
+        }
+    }
+
+    &-copyright-paragraph {
+        font-family: $font-josefinSans;
+        font-size: 24px;
+        color: $color-primary;
+        @include textStyles(capitalize);
+        
+        @media(max-width: 2560px) {
+            font-size: 18px;
+        }
+
+        @media(max-width: 800px) {
+            width: 70%;
+            margin: auto;
+            text-align: center;
+        }
+
+        @media(max-width: 500px) {
+            font-size: 14px;
+        }
+    }
+}
