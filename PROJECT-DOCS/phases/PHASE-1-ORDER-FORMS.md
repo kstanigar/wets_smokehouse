@@ -6,15 +6,17 @@
 
 ## 🎯 CRITICAL REQUIREMENTS
 
-### **No Payment System**
+### **No Payment System** (At Launch)
 - This is an ORDER REQUEST system, not a payment system
 - Customers request orders, owner confirms manually
 - Creates personal touch and manages kitchen flow
+- Payment integration is Phase 5 (future)
 
-### **No Pricing Displayed**
-- Menu items shown WITHOUT prices on order form
-- Pricing only shown in admin/menu display (if at all)
-- Keeps focus on the food, not the cost
+### **Pricing IS Displayed** ✅ CORRECTED
+- **PRICING SHOWN:** Menu and order form display prices
+- **QUANTITY SHOWN:** Shows available order count (e.g., "10 available")
+- **Creates Urgency:** "Brisket - $18 (Only 3 left!)"
+- **Real-Time Updates:** Quantity decreases as orders confirmed
 
 ### **Mobile-Friendly FIRST**
 - Primary use case: customer on phone
@@ -41,19 +43,24 @@ Quick orders for weekend BBQ pickup (Friday-Sunday)
 │                                     │
 │  THIS WEEKEND'S MENU:               │
 │                                     │
-│  ○ Brisket (per pound)              │
-│    Quantity: [_] lbs                │
-│                                     │
-│  ○ Ribs (half slab)                 │
+│  ○ Smokehouse Rib Dinner - $17     │
+│    ⚡ 8 orders available             │
 │    Quantity: [_]                    │
 │                                     │
-│  ⊗ Pulled Pork - SOLD OUT          │
+│  ○ Chicken Wingettes - $16          │
+│    ⚡ 12 orders available            │
+│    Quantity: [_]                    │
+│                                     │
+│  ⊗ Brisket Sandwich - $17.50       │
+│    🚫 SOLD OUT                      │
 │    (grayed out, disabled)           │
 │                                     │
-│  ○ Sausage (per link)               │
+│  ○ Brisket (1/2 Slab) - $30         │
+│    ⚡ 5 orders available             │
 │    Quantity: [_]                    │
 │                                     │
-│  ○ Hotlinks                         │
+│  ○ Hotlinks - $8.00                 │
+│    ⚡ Only 2 left!                   │
 │    Quantity: [_]                    │
 │                                     │
 │  SIDES (optional):                  │
@@ -93,10 +100,12 @@ Quick orders for weekend BBQ pickup (Friday-Sunday)
 #### **Menu Items** (Dynamic from Supabase)
 - **Type:** Radio buttons OR checkboxes (user can select multiple)
 - **Display:**
-  - Available: Normal text, enabled
+  - Available: Normal text, enabled, show price and quantity
   - Sold Out: Grayed text, disabled, show "SOLD OUT"
+  - Low Stock: Highlight urgency "Only X left!"
 - **Quantity:** Number input next to each item
-- **NO PRICING:** Do not show prices
+- **PRICING:** Show price per unit (e.g., "$17.00 each", "$30.00 per 1/2 slab")
+- **Availability:** Show quantity available (e.g., "8 orders available", "Only 2 left!")
 
 #### **Customer Info** (Required)
 - Name: Text input, required
@@ -129,109 +138,85 @@ Quick orders for weekend BBQ pickup (Friday-Sunday)
 
 ---
 
-## 🍽️ CATERING ORDER FORM
+## 🍽️ CATERING REQUEST FORM (SIMPLIFIED)
 
 ### **Purpose**
-Advance orders for catering events (parties, gatherings, corporate)
+Simple catering inquiry form - NO menu, just contact info + message
 
 ### **Form Design (Mobile-First)**
 
 ```
 ┌─────────────────────────────────────┐
-│  🎉 REQUEST CATERING 🎉             │
+│  🎉 CATERING REQUEST 🎉             │
 ├─────────────────────────────────────┤
 │                                     │
-│  EVENT INFORMATION:                 │
-│  Event Date: [Date picker]          │
-│  Event Time: [Time picker]          │
-│  Guest Count: [___] people          │
-│  Event Type:                        │
-│    ○ Birthday  ○ Corporate          │
-│    ○ Wedding   ○ Other: ______      │
-│                                     │
-│  ─────────────────────────────────  │
-│                                     │
-│  CATERING MENU:                     │
-│                                     │
-│  MEATS:                             │
-│  ☐ Brisket (estimate lbs): [_]      │
-│  ☐ Ribs (estimate slabs): [_]       │
-│  ☐ Pulled Pork (lbs): [_]           │
-│  ☐ Sausage (count): [_]             │
-│  ☐ Chicken (pieces): [_]            │
-│                                     │
-│  SIDES:                             │
-│  ☐ Mac & Cheese (serves): [_]       │
-│  ☐ Coleslaw (serves): [_]           │
-│  ☐ Baked Beans (serves): [_]        │
-│  ☐ Cornbread (serves): [_]          │
-│  ☐ Potato Salad (serves): [_]       │
-│                                     │
-│  ─────────────────────────────────  │
-│                                     │
-│  DELIVERY/PICKUP:                   │
-│  ○ I'll pick up                     │
-│  ○ Please deliver                   │
-│                                     │
-│  If delivery:                       │
-│  Address: ____________________      │
-│           ____________________      │
-│  City/Zip: ___________________      │
-│                                     │
-│  ─────────────────────────────────  │
+│  Let us make your event special!    │
+│  We cater parties, corporate events,│
+│  weddings, and more.                │
 │                                     │
 │  YOUR INFORMATION:                  │
 │  Name:  _____________________       │
-│  Email: _____________________       │
-│  Phone: _____________________       │
-│  Company (opt): ______________      │
+│            (required)               │
 │                                     │
-│  BUDGET/NOTES:                      │
+│  Email: _____________________       │
+│            (required)               │
+│                                     │
+│  Phone: _____________________       │
+│            (required)               │
+│                                     │
+│  ─────────────────────────────────  │
+│                                     │
+│  EVENT DETAILS:                     │
 │  ┌─────────────────────────────┐   │
-│  │ Budget: $_______            │   │
-│  │                             │   │
 │  │ Tell us about your event:   │   │
-│  │ [Textarea]                  │   │
+│  │                             │   │
+│  │ Please include:             │   │
+│  │ - Event date and time       │   │
+│  │ - Number of guests          │   │
+│  │ - Menu preferences          │   │
+│  │ - Delivery or pickup        │   │
+│  │ - Budget (optional)         │   │
+│  │                             │   │
+│  │ [Large textarea]            │   │
 │  └─────────────────────────────┘   │
+│            (required)               │
 │                                     │
 │  [Submit Catering Request]          │
+│  (Large button, 44px+ height)       │
 │                                     │
-│  Note: We'll contact you within     │
-│  24 hours with a custom quote.      │
+│  We'll contact you within 24 hours  │
+│  with a custom quote!               │
 └─────────────────────────────────────┘
 ```
 
-### **Form Fields**
+### **Form Fields** (SIMPLIFIED)
 
-#### **Event Info**
-- Event Date: Date picker (min: 7 days from now)
-- Event Time: Time picker
-- Guest Count: Number input, required
-- Event Type: Radio buttons + "Other" text input
+#### **Customer Info** (All Required)
+- Name: Text input, required
+- Email: Email input, required
+- Phone: Tel input, required
 
-#### **Menu Selection** (Checkboxes)
-- Meats: Checkboxes with quantity inputs
-- Sides: Checkboxes with serving count inputs
-- NO PRICING: Prices provided in quote later
+#### **Event Details** (Required)
+- Message: Large textarea, required
+- Placeholder text:
+  ```
+  Tell us about your event!
 
-#### **Delivery/Pickup**
-- Radio: Pickup or Delivery
-- If delivery: Address fields (required)
-
-#### **Customer Info**
-- Name, Email, Phone (required)
-- Company name (optional)
-
-#### **Budget/Notes**
-- Budget: Optional number input (helps owner quote)
-- Notes: Textarea for event details
+  Please include:
+  - Event date and time
+  - Number of guests
+  - What you'd like to serve (ribs, brisket, sides, etc.)
+  - Delivery address or pickup
+  - Your budget (optional but helpful)
+  - Any special requests
+  ```
 
 ### **Form Validation**
-- Event date at least 7 days out (configurable)
-- Guest count > 0
-- At least one meat or side selected
-- If delivery selected, address required
 - Name, email, phone required
+- Email format valid
+- Phone format valid
+- Message not empty (min 20 characters)
+- That's it! Much simpler.
 
 ### **Submit Behavior**
 1. Validate all fields

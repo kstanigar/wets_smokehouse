@@ -20,27 +20,57 @@
 
 ## 📅 RECENT UPDATES (Newest First)
 
+### 2026-04-08: INVENTORY MANAGEMENT & PRICING CLARIFIED
+**Decision:** Real-time inventory system with quantity tracking and pricing display
+**Status:** ✅ User clarified CRITICAL inventory workflow
+**Action Items:**
+- [x] Update all .md files with inventory/pricing requirements
+- [ ] Add quantity tracking to database schema
+- [ ] Add price management to admin interface
+- [ ] Implement quantity decrement on order confirmation
+
+**CRITICAL CHANGES:**
+- **PRICING IS SHOWN:** Menu and order form display prices (I was WRONG before!)
+- **Quantity Tracking:** Each item has available order count (e.g., "10 available")
+- **Creates Urgency:** "Brisket - $18 (Only 3 left!)" drives sales
+- **Real-Time Decrement:** Quantity decreases as orders confirmed in Google Sheets
+- **Auto Sold Out:** When quantity = 0, item automatically becomes "Sold Out"
+
+**Backend Admin Changes:**
+- Each menu item has 3 fields:
+  1. **Available:** Radio button (yes/no)
+  2. **Quantity:** Number of orders available (e.g., 10)
+  3. **Price:** Price per unit (persists week-to-week unless changed)
+- Owner updates quantity before each weekend
+- Prices stay same unless owner changes them
+
+**Sold Out Logic:**
+- **Manual:** Owner unchecks "Available" → Sold Out
+- **Automatic:** Quantity reaches 0 → Sold Out
+
+---
+
 ### 2026-04-08: CRITICAL - Order Form & Google Sheets Workflow Clarified
 **Decision:** Orders flow through Google Sheets (NOT payment system at launch)
 **Status:** ✅ User clarified core workflow
 **Action Items:**
-- [ ] Update all .md files with order form requirements
-- [ ] Add Google Sheets write access to architecture
-- [ ] Design weekend vs catering order forms
-- [ ] Update Phase 1 to include order forms
+- [x] Update all .md files with order form requirements
+- [x] Add Google Sheets write access to architecture
+- [x] Design weekend vs catering order forms
+- [x] Update Phase 1 to include order forms
 
 **CRITICAL CHANGES:**
 - **Order Forms (NO Payment):** Customers fill out form to REQUEST orders
-- **No Pricing Displayed:** Menu items shown without prices on order form
-- **Radio Buttons:** Customer selects items to order
+- **Pricing DISPLAYED:** Menu items show price AND quantity available (CORRECTED)
+- **Radio Buttons/Checkboxes:** Customer selects items to order
 - **"Sold Out" Display:** Unavailable items shown as "Sold Out" (disabled)
 - **Google Sheets = Primary Workflow:** Orders go to Sheets, owner confirms via checkbox
 - **NOT Read-Only:** Owner WRITES to Sheets (checkboxes to confirm orders)
 - **Mobile-Friendly First:** Then responsive for desktop
 
-**Two Order Forms Needed:**
-1. Weekend Specials Form (quick pickup)
-2. Catering Request Form (advance orders, larger quantities)
+**Two Order Forms:**
+1. **Weekend Specials:** Full menu with pricing and quantities
+2. **Catering Request:** Simple form (name, email, phone, message only - NO menu)
 
 **Workflow:**
 ```
@@ -164,25 +194,33 @@ Customer → PaymentProcessor → Square → Order confirmed
 ```
 
 ### Owner Workflow
-1. **Thursday Evening:**
+1. **Thursday Evening (Menu Setup):**
    - Log into admin on phone (30 sec)
-   - Update weekend menu checkboxes (30 sec)
+   - For each menu item:
+     - Check "Available" radio button
+     - Enter quantity available (e.g., "Brisket: 10 orders")
+     - Update price if needed (or leave same as last week)
+   - Save menu (1 min)
    - Send VIP email blast with photo (1 min)
 
-2. **Friday-Sunday:**
-   - Customers visit site, see menu
-   - Customers fill order form (weekend or catering)
+2. **Friday-Sunday (Orders Come In):**
+   - Customers see menu: "Brisket - $18/lb (10 available)"
+   - Customers fill order form and submit
    - Orders appear in Google Sheets INSTANTLY
    - Owner opens Sheets on phone
    - Taps checkbox next to order to confirm
+   - **Quantity auto-decrements:** "Brisket (9 available)" on frontend
    - Customer automatically gets confirmation email
 
-3. **Continuous:**
-   - Mark items as "Sold Out" in admin when running low
-   - Frontend updates instantly (no sold out items on order form)
-   - Can accept VIP email signups anytime
+3. **When Items Selling Fast:**
+   - Frontend shows urgency: "Brisket - $18 (Only 2 left!)"
+   - When quantity = 0 → Auto "Sold Out"
+   - Owner can manually mark sold out if needed (uncheck "Available")
 
-**Total Time:** <2 minutes per order, <5 minutes/day for menu updates
+**Total Time:**
+- Menu setup: 3-5 minutes (Thursday)
+- Per order confirmation: <30 seconds (tap checkbox in Sheets)
+- Menu updates during weekend: <1 minute if needed
 
 ---
 
