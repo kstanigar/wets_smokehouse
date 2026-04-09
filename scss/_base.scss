@@ -1,8 +1,16 @@
-$color-dark: #262626;
+// WET SMOKEHOUSE BBQ Color Scheme (from logo)
+$color-rust: #D2691E;        // Primary rust/orange
+$color-wood: #8B4513;        // Wood brown
+$color-charcoal: #2C2416;    // Very dark brown/charcoal
+$color-flame: #FF6347;       // Fire orange (accents/CTAs)
+$color-cream: #F5DEB3;       // Light text/cream
 $color-black: #000;
-$color-primary: #d3ab55;
-$color-secondary: #bbb;
 $color-white: #fff;
+
+// Legacy color mappings (for gradual migration)
+$color-dark: $color-charcoal;
+$color-primary: $color-rust;
+$color-secondary: $color-cream;
 
 $font-dancingScript: 'Dancing Script',
 cursive;
