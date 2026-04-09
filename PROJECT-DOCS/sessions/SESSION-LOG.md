@@ -4,6 +4,62 @@
 
 ---
 
+## 2026-04-08 | CRITICAL ORDER WORKFLOW CLARIFICATION
+
+**Session Duration:** 30 minutes (ongoing)
+**AI Agent:** Claude Sonnet 4.5
+**Phase:** Planning & Documentation
+**User:** Keith Stanigar
+
+### Summary
+**MAJOR CLARIFICATION:** User explained the core order workflow that changes the entire project scope. This is NOT a payment system - it's an ORDER REQUEST system with Google Sheets as the CRITICAL confirmation workflow.
+
+### Key Realizations
+1. **Order Forms (NO Payment):** Customers submit order requests via forms
+2. **No Pricing:** Order forms don't show prices
+3. **Google Sheets = Critical:** Orders flow to Sheets, owner confirms via checkbox
+4. **NOT Read-Only:** Google Sheets is read/write (owner interacts)
+5. **Two Forms:** Weekend orders + Catering requests (separate)
+6. **Mobile-Friendly First:** Then responsive for desktop
+
+### Critical Workflow Discovered
+```
+Customer fills order form → Supabase → Google Sheets (instant)
+                                            ↓
+Owner opens Sheets on phone → Taps checkbox
+                                            ↓
+Webhook updates Supabase → Confirmation email sent
+```
+
+### Files Updated
+- MASTER-PLAN.md (added order workflow)
+- RULES.md (emphasized Google Sheets importance)
+- QUICKSTART.md (updated launch features)
+- PHASE-1-frontend.md (added order forms)
+- Created: PHASE-1-ORDER-FORMS.md (detailed spec)
+- Created: PHASE-3-integration.md (Google Sheets focus)
+
+### Questions Answered
+- **Separate forms?** YES - Weekend + Catering
+- **Google Sheets access?** WRITE access (owner confirms via checkbox)
+- **Pricing on forms?** NO - no pricing displayed
+- **Mobile-friendly?** YES - mobile FIRST, then responsive
+
+### Decisions Made
+1. Build weekend order form with radio buttons (no pricing)
+2. Build catering request form (separate, advance orders)
+3. Google Sheets is PRIMARY workflow (not optional)
+4. Checkbox in Sheets triggers confirmation email
+5. "Sold Out" items show as disabled on forms
+
+### Next Session
+- Continue updating remaining .md files
+- Finalize Phase 2, 3, 4 plans
+- Commit documentation updates
+- Await approval to begin Phase 1
+
+---
+
 ## 2026-04-08 | Planning & Documentation Setup
 
 **Session Duration:** 90 minutes

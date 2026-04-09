@@ -35,10 +35,13 @@
 ## 🎯 Quick Context
 
 **Launch Features (Phases 1-4):**
-- Menu management (owner updates from phone)
+- **Order request forms** (weekend + catering, NO payment)
+- **Google Sheets workflow** (orders appear, owner confirms via checkbox)
+- Menu management (owner updates availability from phone)
+- "Sold Out" display (disabled items on order form)
 - VIP email blasts (SendGrid free tier)
 - Customer email capture (build VIP list)
-- Google Sheets order view (when payments added)
+- Mobile-friendly first, then responsive
 
 **Post-Launch Features (Phases 5-6, When Approved):**
 - Square payments (owner has account)

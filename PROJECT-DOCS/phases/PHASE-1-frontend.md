@@ -10,18 +10,29 @@
 
 Transform Munchos template to WET SMOKEHOUSE branding
 Build simple 3-button admin interface (mobile-first)
-Add customer email signup form
+**Add weekend order form** (radio buttons, no pricing, mobile-friendly)
+**Add catering order form** (separate form for advance orders)
+Add customer VIP email signup form
 Deploy preview to Vercel
-Owner can view and update menu from phone
+Owner can update menu and orders flow to Google Sheets
 
 ---
 
 ## 📅 RECENT UPDATES (Newest First)
 
+### 2026-04-08: CRITICAL - Order Forms Added to Scope
+**Major Change:** Added weekend + catering order forms (NO payment)
+- Orders go to Google Sheets for owner confirmation
+- Radio buttons to select menu items
+- NO pricing displayed on order forms
+- "Sold Out" items show as disabled
+- Mobile-friendly FIRST, then responsive
+- Separate forms: Weekend vs Catering
+
 ### 2026-04-08: Phase Approved
 - User approved Phase 1 to begin
 - Documentation complete
-- Git repo pending initialization
+- Git repo initialized ✅
 - No blockers
 
 ---
@@ -29,18 +40,25 @@ Owner can view and update menu from phone
 ## ✅ GOALS
 
 1. Rebrand Munchos template to WET SMOKEHOUSE
-2. Build admin interface (3 sections: menu, VIP blast, orders)
-3. Add customer email capture form on frontend
-4. Connect to Supabase (menu read/write)
-5. Deploy preview to Vercel
-6. Test on mobile device
+2. Build admin interface (3 sections: menu, VIP blast, orders link)
+3. **Add weekend order form** (mobile-friendly, radio buttons, no pricing)
+4. **Add catering order form** (separate form, advance requests)
+5. Add customer VIP email signup form
+6. Connect to Supabase (menu, orders, VIP customers)
+7. Deploy preview to Vercel
+8. Test ALL features on mobile device
 
 **Success Criteria:**
 - Owner can update menu from phone
+- **Customers can submit weekend orders** (form works on mobile)
+- **Customers can submit catering requests** (separate form)
+- "Sold Out" items display correctly (disabled/grayed)
+- **NO pricing shown on order forms**
 - Customers can sign up for VIP emails
-- Changes appear on customer site instantly
+- Menu changes appear on site instantly
+- Orders save to Supabase (will sync to Sheets in Phase 3)
 - Admin loads in <2 seconds on 4G
-- Email signup form saves to Supabase
+- All forms mobile-friendly FIRST
 
 ---
 

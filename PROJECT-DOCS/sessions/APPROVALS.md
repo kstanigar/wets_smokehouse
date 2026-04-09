@@ -6,22 +6,84 @@
 
 ## PENDING APPROVALS (Newest First)
 
-### 2026-04-08 | Begin Phase 1 Implementation
+### 2026-04-08 | Updated Phase 1 with Order Forms
 **Status:** ⏳ Awaiting Approval
 **Requested By:** Claude Sonnet 4.5
-**Type:** Phase Start
+**Type:** Scope Change + Phase Start
 **Description:**
-- Begin Phase 1: Frontend transformation
-- First task: Initialize Git repo
-- Second task: Munchos → WET SMOKEHOUSE rebrand
+- Phase 1 now includes weekend + catering order forms
+- Google Sheets workflow added to Phase 3
+- All .md files updated with order workflow
+- Ready to begin implementation with new scope
 
-**Impact:** Starts actual code development
+**Impact:** Starts actual code development with complete understanding
 **Urgency:** High (ready to start)
 **User Response:** [Pending explicit "proceed" confirmation]
 
 ---
 
 ## APPROVED (Newest First)
+
+### 2026-04-08 | Order Request System (NO Payment at Launch)
+**Status:** ✅ Approved
+**Approved By:** Keith Stanigar
+**Date:** 2026-04-08
+**Quote:** "The customers will use a form to order the weekend specials... There will be no pricing on the order form."
+**Description:**
+- Order request forms (NOT payment system at launch)
+- Two forms: Weekend orders + Catering requests
+- No pricing displayed on order forms
+- Radio buttons to select menu items
+- "Sold Out" items shown as disabled
+**Rationale:** Allows orders without payment complexity, maintains personal touch
+**Implementation:** PHASE-1-ORDER-FORMS.md created
+
+---
+
+### 2026-04-08 | Google Sheets as CRITICAL Workflow
+**Status:** ✅ Approved
+**Approved By:** Keith Stanigar
+**Date:** 2026-04-08
+**Quote:** "Google Sheets must be included even without payment. Google Sheets is how the owner confirms the orders placed on the site. So it can't be read only access."
+**Description:**
+- Google Sheets is PRIMARY order confirmation method
+- Orders flow to Sheets in real-time
+- Owner confirms orders via checkbox (WRITE access)
+- Checkbox triggers webhook → customer confirmation email
+- CRITICAL to project success
+**Rationale:** Owner already knows Sheets, works on mobile, creates personal touch
+**Implementation:** PHASE-3-integration.md created (Google Sheets focus)
+
+---
+
+### 2026-04-08 | Mobile-Friendly FIRST, Then Responsive
+**Status:** ✅ Approved
+**Approved By:** Keith Stanigar
+**Date:** 2026-04-08
+**Quote:** "I want to clarify that the frontend should be mobile friendly first and responsive."
+**Description:**
+- Design for mobile FIRST (375px+ screens)
+- Then make responsive for tablet/desktop
+- Customers primarily order from phones
+- Owner manages from phone
+**Implementation:** Updated PHASE-1 requirements
+
+---
+
+### 2026-04-08 | Weekend vs Catering Forms
+**Status:** ✅ Approved (implicit from question)
+**Approved By:** Keith Stanigar
+**Date:** 2026-04-08
+**Quote:** "Should we have separate forms for the weekend orders and catering?"
+**Description:**
+- Two separate order forms:
+  1. Weekend Specials (quick pickup, same/next day)
+  2. Catering Requests (advance orders, larger quantities)
+- Different workflows and requirements
+**Rationale:** User asked the question, implying awareness of need
+**Implementation:** Both forms specified in PHASE-1-ORDER-FORMS.md
+
+---
 
 ### 2026-04-08 | Documentation Structure & File Creation
 **Status:** ✅ Approved

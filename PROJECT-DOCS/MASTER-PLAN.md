@@ -20,6 +20,41 @@
 
 ## 📅 RECENT UPDATES (Newest First)
 
+### 2026-04-08: CRITICAL - Order Form & Google Sheets Workflow Clarified
+**Decision:** Orders flow through Google Sheets (NOT payment system at launch)
+**Status:** ✅ User clarified core workflow
+**Action Items:**
+- [ ] Update all .md files with order form requirements
+- [ ] Add Google Sheets write access to architecture
+- [ ] Design weekend vs catering order forms
+- [ ] Update Phase 1 to include order forms
+
+**CRITICAL CHANGES:**
+- **Order Forms (NO Payment):** Customers fill out form to REQUEST orders
+- **No Pricing Displayed:** Menu items shown without prices on order form
+- **Radio Buttons:** Customer selects items to order
+- **"Sold Out" Display:** Unavailable items shown as "Sold Out" (disabled)
+- **Google Sheets = Primary Workflow:** Orders go to Sheets, owner confirms via checkbox
+- **NOT Read-Only:** Owner WRITES to Sheets (checkboxes to confirm orders)
+- **Mobile-Friendly First:** Then responsive for desktop
+
+**Two Order Forms Needed:**
+1. Weekend Specials Form (quick pickup)
+2. Catering Request Form (advance orders, larger quantities)
+
+**Workflow:**
+```
+Customer fills order form → Supabase → Google Sheets (instant)
+                                            ↓
+Owner opens Sheets on phone → Checks box to confirm
+                                            ↓
+Webhook updates Supabase → Customer gets confirmation email
+```
+
+**Next:** Update all documentation with this critical workflow
+
+---
+
 ### 2026-04-08: Documentation Structure Approved & Created
 **Decision:** Create all PROJECT-DOCS files, initialize Git repo
 **Status:** ✅ Approved by user
@@ -31,7 +66,8 @@
 - [x] Create PHASE files (1-4)
 - [x] Create SESSION-LOG.md
 - [x] Create APPROVALS.md
-- [ ] Initialize Git repo
+- [x] Initialize Git repo
+- [ ] Update with order form workflow
 - [ ] Begin Phase 1
 
 **Changed:**
@@ -40,7 +76,7 @@
 - Payments: Square primary (when approved), Stripe secondary
 - Architecture: Build interfaces now, implement features later
 
-**Next:** Initialize Git, begin Phase 1 (Frontend)
+**Next:** Update documentation with order form workflow, begin Phase 1 (Frontend)
 
 ---
 
@@ -88,27 +124,42 @@ Build abstraction layers NOW to avoid refactoring later:
 
 ### Problem Statement
 Weekend BBQ business needs:
-1. Menu management from phone
-2. VIP customer email blasts (with photos)
-3. Customer email capture (VIP list building)
-4. Simple management for non-tech owner
-5. Zero monthly costs at launch
-6. Easy to add SMS/payments later (no refactoring)
+1. **Order Request System** - Customers fill form to request orders (NO payment at launch)
+2. **Google Sheets Workflow** - Orders appear in Sheets, owner confirms via checkbox
+3. **Menu Management** - Owner updates availability from phone
+4. **VIP Email Blasts** - Send weekend specials with photos
+5. **Mobile-Friendly** - Customers order from phones
+6. **Simple for Owner** - Non-tech owner manages from phone
+7. **Zero Monthly Costs** - All free tiers at launch
+8. **Future-Proof** - Easy to add SMS/payments later (no refactoring)
 
 ### Solution Architecture
 ```
-Customer Site (Next.js)
+ORDER WORKFLOW (Primary - Launch Feature):
+Customer fills order form (mobile-friendly)
     ↓
-Supabase (Database + Auth + Storage)
+Order saved to Supabase
     ↓
-Google Sheets (Owner's order view)
+Order appears in Google Sheets (instant)
+    ↓
+Owner checks checkbox in Sheets (confirms order)
+    ↓
+Webhook updates Supabase order status
+    ↓
+Customer gets confirmation email
 
-VIP Blasts:
+MENU MANAGEMENT:
+Backend Admin → Supabase → Frontend (real-time update)
+    ↓
+"Sold Out" items disabled on order form
+
+VIP BLASTS:
 Backend Admin → MessageService → SendGrid (email)
                             └→ [Twilio later] (SMS)
 
-Payments (Future):
-Customer → PaymentProcessor → Square
+PAYMENTS (Phase 5 - Future):
+Add payment step before order confirmation
+Customer → PaymentProcessor → Square → Order confirmed
                           └→ [Stripe alternative]
 ```
 
@@ -120,14 +171,18 @@ Customer → PaymentProcessor → Square
 
 2. **Friday-Sunday:**
    - Customers visit site, see menu
-   - Customers can sign up for VIP emails
-   - (Later: customers can order via Square)
+   - Customers fill order form (weekend or catering)
+   - Orders appear in Google Sheets INSTANTLY
+   - Owner opens Sheets on phone
+   - Taps checkbox next to order to confirm
+   - Customer automatically gets confirmation email
 
-3. **Order Management (When Payments Added):**
-   - Check orders in Google Sheets
-   - Tap checkbox to confirm
+3. **Continuous:**
+   - Mark items as "Sold Out" in admin when running low
+   - Frontend updates instantly (no sold out items on order form)
+   - Can accept VIP email signups anytime
 
-**Total Time:** <5 minutes/week
+**Total Time:** <2 minutes per order, <5 minutes/day for menu updates
 
 ---
 
@@ -187,12 +242,17 @@ Customer → PaymentProcessor → Square
 
 ### Week 1 (Phase 1: Frontend)
 - [ ] Owner can view site on phone
-- [ ] Menu displays correctly
+- [ ] Menu displays correctly (mobile-friendly first, then responsive)
 - [ ] Admin panel accessible on phone
 - [ ] Can update menu items (checkboxes work)
-- [ ] Customer email signup form works
+- [ ] **Weekend order form works** (radio buttons, no pricing)
+- [ ] **Catering order form works** (separate form)
+- [ ] "Sold Out" items display correctly
+- [ ] Customer VIP email signup form works
 
 ### Week 2 (Phase 2: Backend)
+- [ ] **Orders save to Supabase**
+- [ ] **Orders appear in Google Sheets instantly**
 - [ ] VIP email list stored in Supabase
 - [ ] Owner can compose email message
 - [ ] Owner can upload photo for email
@@ -200,26 +260,29 @@ Customer → PaymentProcessor → Square
 - [ ] Email includes photo and message
 
 ### Week 3 (Phase 3: Integration)
+- [ ] **Google Sheets checkbox triggers order confirmation**
+- [ ] **Webhook updates Supabase when owner checks box**
+- [ ] **Customer gets confirmation email automatically**
 - [ ] Menu updates sync to Supabase
-- [ ] Menu changes appear on frontend instantly
+- [ ] Menu changes appear on frontend instantly (sold out items)
 - [ ] VIP emails sent via SendGrid
-- [ ] Google Sheets shows VIP signups
 - [ ] All features work on mobile
 
-### Week 4 (Phase 4: Deployment)
+### Week 4 (Phase 4: Deployment & Testing)
 - [ ] Site deployed to Vercel
 - [ ] Custom domain connected (if applicable)
-- [ ] Owner trained (15-minute call)
+- [ ] **Test full order workflow** (form → Sheets → confirmation)
+- [ ] Owner trained (30-minute call - includes Google Sheets)
 - [ ] Documentation complete
 - [ ] Ready for weekend operations
 
 ### Post-Launch (Phase 5: Payments - When Approved)
 - [ ] Square integration complete
-- [ ] Customers can add to cart
+- [ ] Add pricing to order form
+- [ ] Payment step added before order submission
 - [ ] Checkout redirects to Square
-- [ ] Orders saved to Supabase
-- [ ] Orders appear in Google Sheets
-- [ ] Owner can confirm orders via checkbox
+- [ ] Only paid orders go to Google Sheets
+- [ ] Owner confirms fulfillment (not payment) via checkbox
 
 ### Post-Launch (Phase 6: SMS - When Approved)
 - [ ] Twilio account set up
@@ -284,12 +347,16 @@ Customer → PaymentProcessor → Square
 - Stripe as backup if Square doesn't meet needs
 - Both use same PaymentProcessor interface
 
-**Why Google Sheets for Orders?**
+**Why Google Sheets for Orders?** ⚠️ CRITICAL TO SUCCESS
 - Owner already knows how to use it
-- Works on phone
-- Familiar checkbox interface
+- Works on phone (owner at smoker, not desk)
+- Familiar checkbox interface (tap to confirm)
 - Zero learning curve
 - Can export data if needed
+- **PRIMARY confirmation method** (not just a view)
+- Creates personal touch (manual confirmation)
+- Owner sees all order details instantly
+- **NOT read-only** - owner writes checkmarks
 
 **Why Supabase over Firebase?**
 - Better PostgreSQL (real database, not NoSQL)

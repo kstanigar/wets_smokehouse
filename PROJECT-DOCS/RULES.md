@@ -50,7 +50,12 @@
 **Budget:** $0/month at launch (all free tiers)
 **Timeline:** 4 weeks to launch
 
-**Key Constraint:** Owner must be able to manage from phone while cooking
+**Key Constraints:**
+- Owner must be able to manage from phone while cooking
+- **Google Sheets is CRITICAL** - Primary order confirmation workflow
+- Customers fill order forms (NO payment at launch)
+- Mobile-friendly first, then responsive
+- No pricing shown on order forms
 
 ---
 
@@ -134,15 +139,22 @@ interface PaymentProcessor {
 ## 📱 Owner Interface Requirements
 
 **Must Be:**
-- Mobile-friendly (owner uses phone)
+- Mobile-friendly FIRST (owner uses phone)
+- Then responsive for desktop
 - <3 clicks to do anything
 - Zero technical jargon
 - Works offline (graceful degradation)
 
 **Three Core Actions:**
-1. Update menu availability (checkboxes)
+1. Update menu availability (checkboxes for available/sold out)
 2. Send VIP email blast (text + photo + send button)
-3. View orders (Google Sheets with checkbox)
+3. **Confirm orders in Google Sheets** (tap checkbox - CRITICAL WORKFLOW)
+
+**Google Sheets Workflow (CRITICAL):**
+- Orders appear in real-time
+- Owner taps checkbox to confirm
+- Customer automatically gets confirmation email
+- **NOT read-only** - owner interacts with Sheets
 
 ---
 
