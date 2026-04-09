@@ -5,10 +5,13 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/main.css">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
-    <link href="https://fonts.googleapis.com/css?family=Dancing+Script:400,700|Josefin+Sans:300,400,600,700|Nunito:300,400,600,700" rel="stylesheet">
-    <title>Munchos | Smoke &amp; Grill</title>
-    <link rel="shortcut icon" href="./images/muchos_icon.png" type="image/png" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css"
+        integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+    <link
+        href="https://fonts.googleapis.com/css?family=Dancing+Script:400,700|Josefin+Sans:300,400,600,700|Nunito:300,400,600,700"
+        rel="stylesheet">
+    <title>WET'S SMOKEHOUSE | BBQ &amp; Catering</title>
+    <link rel="shortcut icon" href="./assets/wet_logo_1.png" type="image/png" />
 </head>
 
 <body>
@@ -60,42 +63,49 @@
     <header class="header">
         <div class="brand">
             <a href="#" class="logo">
-                <img class="logo-img" src="https://img.icons8.com/color/96/000000/cuts-of-pork.png" />
+                <img class="logo-img" src="./assets/wet_logo_1.png" alt="WET'S SMOKEHOUSE Logo" />
             </a>
             <div>
-                <h1 class="main-name">Munchos</h1>
-                <p class="sub-name">Smoke &amp; Grill</p>
+                <h1 class="main-name">WET'S SMOKEHOUSE</h1>
+                <p class="sub-name">BBQ &amp; Catering</p>
             </div>
         </div>
         <div class="header-banner">
-            <h1 class="main-heading">Come and Get it!</h1>
-            <h3 class="sub-heading">Nothing tasted so good.</h3>
-            <button class="main-btn" type="button">Delivery!</button>
+            <h1 class="main-heading">This Saturday's Smokehouse Specials</h1>
+            <h3 class="sub-heading">Slow-Smoked. Made with Love.</h3>
+            <button class="main-btn" type="button" onclick="window.location.href='/order'">Order Now</button>
         </div>
     </header>
     <!--    End of Header    -->
     <!--    About Us    -->
-    <section class="about-us">
+    <section class="about-us" id="about">
         <div class="about-us-left">
-            <img src="./images/about-us-img-3.png" alt="">
+            <img src="./images/about-us-img-3.png" alt="WET'S SMOKEHOUSE BBQ">
         </div>
         <div class="about-us-right">
             <h1 class="main-heading">About Us</h1>
-            <h3 class="sub-heading">Find out our secrets!</h3>
+            <h3 class="sub-heading">Authentic Smokehouse BBQ Since 2021</h3>
             <div class="stars">
                 <img class="star" src="https://img.icons8.com/fluent/48/000000/star.png" />
                 <img class="star" src="https://img.icons8.com/fluent/48/000000/star.png" />
                 <img class="star" src="https://img.icons8.com/fluent/48/000000/star.png" />
                 <img class="star" src="https://img.icons8.com/fluent/48/000000/star.png" />
             </div>
-            <p class="description">Munchos is the pride and joy of Texas native Chef Joe. He literally grew up around the smoke pit. He graduated from Corden Bleu Culinaary Academy in 2004 and spent 10 years preparing meals for VIP's and executives in New York City. But his true passion has always been bbq. Now, he's able to share that passion with you. Come and get a taste of the best kept secret in town!</p>
+            <p class="description">WET'S SMOKEHOUSE brings you authentic, slow-smoked BBQ every Saturday in Denver. We take our time with every cut of meat, letting the smoke work its magic for hours until it's fall-off-the-bone tender. This is real BBQ - no shortcuts, no compromises. Just honest, delicious food made with passion.</p>
+
+            <div class="hours-info">
+                <h3 class="sub-heading" style="font-size: 24px; margin: 20px 0 10px;">Operating Hours</h3>
+                <p class="description" style="font-size: 18px; margin-bottom: 10px;"><strong>Saturday: 11AM - 5PM</strong></p>
+                <p class="description" style="font-size: 16px; font-style: italic;">📞 24-hour notice required | Call (720) 789-0828</p>
+            </div>
+
             <div class="stars">
                 <img class="star" src="https://img.icons8.com/fluent/48/000000/star.png" />
                 <img class="star" src="https://img.icons8.com/fluent/48/000000/star.png" />
                 <img class="star" src="https://img.icons8.com/fluent/48/000000/star.png" />
                 <img class="star" src="https://img.icons8.com/fluent/48/000000/star.png" />
             </div>
-            <button class="secondary-btn" type="button">Learn More</button>
+            <button class="secondary-btn" type="button" onclick="window.location.href='/order'">Order Now</button>
         </div>
     </section>
     <!--    End of About Us    -->
@@ -190,9 +200,12 @@
             </ul>
         </div>
         <div class="footer-copyright">
-            <p class="footer-copyright-paragraph">&copy; Copyright 2020. Munchos Smoke &amp; Grill. All rights reserved.</p>
+            <p class="footer-copyright-paragraph">&copy; Copyright 2020. Munchos Smoke &amp; Grill. All rights reserved.
+            </p>
         </div>
     </footer>
     <!--    End of Footer    -->
 
-</body></html>
+</body>
+
+</html>
